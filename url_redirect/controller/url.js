@@ -1,18 +1,19 @@
-const ShortID = require('shortid');
-const mongoose = require('mongoose');
-const url = require('../model/url');
 const shortid = require('shortid');
+const mongoose = require('mongoose');
+const Url = require('../model/url');
+
 
 async function handleUrl(req,res){
- shortid = shortID();
+ const shortID = shortid();
  const body = req.body;
  if(!body.url) return res.status(400).json({error: 'Url is required!'});
- await url.create({
-  shortID : shortid,
-  redirecturl : body.url,
+ 
+ await Url.create({
+  ShortID : shortID,
+  redirect_url : body.url,
   visited :[],
  });
- return res.json({id : shortid});
+ return res.json({id : shortID});
 }
 
 module.exports= {

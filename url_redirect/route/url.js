@@ -1,5 +1,7 @@
 const express = require('express');
 const {handleUrl} = require("../controller/url");
-const router = express.Router();
+const Router = express.Router();
 
-router.post('/',handleUrl);
+Router.post('/',handleUrl);
+
+module.exports = Router;
