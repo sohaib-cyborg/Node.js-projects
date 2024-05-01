@@ -14,10 +14,10 @@ const uri = process.env.MONGODB_URI;
 
 connectMongoose(uri).then(console.log("SuccessFully Connected!"));
 
-app.get('/:ShortId',async(req,res)=>{
-    const ShortId = req.params.shortid;
+app.get('/:ShortID',async(req,res)=>{
+    const ShortID = req.params.ShortID;
     const entry = await URL.findOneAndUpdate({
-      ShortId
+      ShortID
     },{
         $push:
         {

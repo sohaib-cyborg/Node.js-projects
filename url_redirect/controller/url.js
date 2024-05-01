@@ -16,6 +16,19 @@ async function handleUrl(req,res){
  return res.json({id : shortID});
 }
 
+async function handleGetAnalytics(req,res){
+    const ShortID = req.params.ShortID;
+    console.log(ShortID)
+    const result = await Url.findOne({ShortID});
+    console.log(result.redirect_url);
+    return res.json({
+        totalClicks : result.visited.length,
+        analytics : result.visited,
+    });
+
+}
+
 module.exports= {
     handleUrl,
+    handleGetAnalytics,
 }
